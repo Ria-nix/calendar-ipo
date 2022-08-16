@@ -1,0 +1,21 @@
+@use '../additional_styles/_color' as *;
+@use '../additional_styles/_mixin' as *;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    @include Flex(row, center, flex-start);
+    margin-top: 20px;
+}
+
+.calendar{
+    min-width: 420px;
+    padding: 25px 20px;
+    border: 1px solid $c_main-border;
+    border-radius: 5px;
+
+}
