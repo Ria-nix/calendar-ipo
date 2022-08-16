@@ -15,6 +15,17 @@ a{
     text-decoration: none;
     color: $c_black;
 }
+.empty{
+    background: transparent !important;
+}
+.black{
+    background: $c_black;
+    border: 3px solid $c_black;
+}
+.blue{
+    background: $c_blue;
+    border: 3px solid $c_blue;
+}
 
 // main code 
 body{
@@ -105,24 +116,34 @@ body{
         }
         .item{
             &>*{
-                border: 1px solid red;
+                // border: 1px solid red;
                 margin: 10px 15px;
-            }
-            
+            }            
             &-name{
                 @include Flex(row, flex-start, center);
                 & .name-circle{
                     display: block;
-                    @include Circle($c_black, transparent);
+                    @include Circle();
                 }
             }
 
-            &-desc .desc__icon{
-                display: block;
-                background: url('../img/info-circle-gray.svg');
-                width: 30px;
-                height: 30px;                
+            &-desc {
+                @include Flex(row, flex-start, none);
+                .desc__icon{
+                    display: block;
+                    background: url('../img/info-circle-gray.svg') no-repeat center;
+                    width: 20px;
+                    height: 20px;  
+                    margin-left: 10px;
+                    transition: background 0.3s ease;
+                    cursor: pointer;
+                    
+                    &:hover{
+                        background: url('../img/info-circle-black.svg') no-repeat center;
+                    }
+                }
             }
+            
             &-date{ margin-left: auto;}
         }        
     }

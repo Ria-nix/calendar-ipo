@@ -5,11 +5,9 @@
     align-items: $align;
 }
 
-@mixin Circle($border-color, $bg-fill){
-    border: 3px solid $border-color;
-    background: $bg-fill;
-    width: 7px;
-    height: 7px;
+@mixin Circle(){
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     margin-right: 10px;
 }
