@@ -1,5 +1,7 @@
 @use '../additional_styles/_color' as *;
 @use '../additional_styles/_mixin' as *;
+
+// additional styles 
 *{
     margin: 0;
     padding: 0;
@@ -9,7 +11,12 @@
 *::after, *::before{
     display: block;
 }
+a{
+    text-decoration: none;
+    color: $c_black;
+}
 
+// main code 
 body{
     display: grid;
     grid-template-columns: repeat(1, minmax(320px, 1440px));
@@ -21,43 +28,60 @@ body{
 }
 
 .calendar{
-    border: 1px solid red;
     height: auto;
     margin: 20px;
 
-    &-title{  font-size: 35px; }
+    &-title{ font-size: 35px; }
     &-block{ width: 100%;}
 
     //! status block 
     .status{
-        margin: 20px 0 20px 20px;
-        @include Flex(row, flex-start, flex-end);        
+        padding: 20px 0;  
+        display: grid;
+        grid-template-columns: 15% 25% 60%;
 
-        &-item{
+        &-item{           
             @include Flex(column, flex-start, flex-start);
+            &:first-child{ padding-left: 20px;}
         }
         &__title{
             color: $c_gray;
             padding-bottom: 3px;
         }
+        &__second-txt{
+            cursor: pointer;
+            @include Flex(row, normal, center);
+            &::after{
+                content: url('../img/arrrow.svg');
+                transform: rotate(90deg);
+                margin: 1px 0 0 10px;
+            }            
+        }
+        & .types::before{
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: $c_gray;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-        .btn-show-events{
+        .link-show-events{
+            margin-left: auto;
             justify-self: flex-end;
-            border: none;
-            background: none;
-            @include Flex(row, flex-start, flex-start);
+            @include Flex(row, center, center);
 
-            &:before{
-                content: url('../img/show-more.svg');
-                width: 50px;
-                height: 50px;
+            .link__icon{
+                display: block;
+                background: url('../img/show-more.svg') no-repeat center;
+                width: 30px;
+                height: 30px;
+                margin-right: 5px;
             }
         }
     }
 
-
     //! information block 
-
     .info{
         @include Flex(column, flex-start, flex-start);
         &-block{
@@ -69,42 +93,54 @@ body{
         &-title{
             padding: 15px 20px 10px 15px;
         }
-        &-date{  color:$c_gray;}
+        &-date{ color:$c_gray;}
         &-item{
             border-top:1px solid $c_border;
             font-size: 14px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 260px));
+            grid-template-columns: repeat(3, 1fr);
+            // grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
             justify-content: space-between;
+            align-items: center;
         }
         .item{
             &>*{
                 border: 1px solid red;
+                margin: 10px 15px;
             }
             
-            .item-name{
-                padding-left: 15px;
+            &-name{
+                @include Flex(row, flex-start, center);
+                & .name-circle{
+                    display: block;
+                    @include Circle($c_black, transparent);
+                }
             }
-        }
-        
+
+            &-desc .desc__icon{
+                display: block;
+                background: url('../img/info-circle-gray.svg');
+                width: 30px;
+                height: 30px;                
+            }
+            &-date{ margin-left: auto;}
+        }        
     }
-
-
     &-link{
-        text-decoration: none;
-        color: $c_black;        
         padding: 15px 0;
         width: 100%;
-        border: none;
+        border-radius: 5px;
         background: $c_main-fon;
+        transition: background 0.5s ease;
         @include Flex(row, center, center);
 
         &__icon{
             display: block;
             background: url('../img/show-more.svg') no-repeat center;
-            width: 25px;
-            height: 25px;
-            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
         }
+        &:hover{  background: #E8EBF3; }
     }
 }
