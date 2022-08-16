@@ -12,15 +12,99 @@
 
 body{
     display: grid;
-    grid-template-columns: repeat(1, minmax(320px, 890px));
+    grid-template-columns: repeat(1, minmax(320px, 1440px));
     justify-content: center;
     align-items: flex-start;
     margin-top: 20px;
     font-family: 'Roboto', sans-serif;
+    color: $c_black;
 }
 
 .calendar{
-    width: 100%;
     border: 1px solid red;
     height: auto;
+    margin: 20px;
+
+    &-title{  font-size: 35px; }
+    &-block{ width: 100%;}
+
+    //! status block 
+    .status{
+        margin: 20px 0 20px 20px;
+        @include Flex(row, flex-start, flex-end);        
+
+        &-item{
+            @include Flex(column, flex-start, flex-start);
+        }
+        &__title{
+            color: $c_gray;
+            padding-bottom: 3px;
+        }
+
+        .btn-show-events{
+            justify-self: flex-end;
+            border: none;
+            background: none;
+            @include Flex(row, flex-start, flex-start);
+
+            &:before{
+                content: url('../img/show-more.svg');
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+
+
+    //! information block 
+
+    .info{
+        @include Flex(column, flex-start, flex-start);
+        &-block{
+            width: 100%;
+            background: $c_main-fon;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        &-title{
+            padding: 15px 20px 10px 15px;
+        }
+        &-date{  color:$c_gray;}
+        &-item{
+            border-top:1px solid $c_border;
+            font-size: 14px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 260px));
+            justify-content: space-between;
+        }
+        .item{
+            &>*{
+                border: 1px solid red;
+            }
+            
+            .item-name{
+                padding-left: 15px;
+            }
+        }
+        
+    }
+
+
+    &-link{
+        text-decoration: none;
+        color: $c_black;        
+        padding: 15px 0;
+        width: 100%;
+        border: none;
+        background: $c_main-fon;
+        @include Flex(row, center, center);
+
+        &__icon{
+            display: block;
+            background: url('../img/show-more.svg') no-repeat center;
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+    }
 }
