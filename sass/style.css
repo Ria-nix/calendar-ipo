@@ -5,14 +5,13 @@
           box-sizing: border-box;
 }
 
+*::after, *::before {
+  display: block;
+}
+
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 890px));
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -20,11 +19,11 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   margin-top: 20px;
+  font-family: "Roboto", sans-serif;
 }
 
 .calendar {
-  min-width: 420px;
-  padding: 25px 20px;
-  border: 1px solid #E8EBF3;
-  border-radius: 5px;
+  width: 100%;
+  border: 1px solid red;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */
